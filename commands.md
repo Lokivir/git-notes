@@ -12,7 +12,7 @@ git init [-q | --quiet] [--bare] [--template=<template_directory>]
 
 example:
 ```
-git init F:\git-notes\
+git init /home/user/git-notes
 ```
 
 ## git add
@@ -25,7 +25,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 	  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
 	  [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing] [--renormalize]
 	  [--chmod=(+|-)x] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	  [--] [<pathspec>…?]
+	  [--] [<pathspec>ï¿½?]
 ```
 
 example:
