@@ -12,7 +12,7 @@ git init [-q | --quiet] [--bare] [--template=<template_directory>]
 
 example:
 ```
-git init /home/user/git-notes
+git init /home/user/git-notes/
 ```
 
 ## git add
