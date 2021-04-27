@@ -2,7 +2,12 @@
 This is a little "documentary" for git commands on what they are, what they do and how to use them.
 
 ## git init
-Creating an empty repository or reinitialize an existing one.
+`git init` creates an empty repository or reinitializes an existing one.
+
+Running it in an existing repository is safe, because it won't overwrite anything that's already there.
+You want to rerun  it, either to pick up added templates or to move it to another place (if `--separate-git-dir` is given).
+
+### Synopsis
 ```
 git init [-q | --quiet] [--bare] [--template=<template_directory>]
 	  [--separate-git-dir <git dir>] [--object-format=<format>]
@@ -10,16 +15,23 @@ git init [-q | --quiet] [--bare] [--template=<template_directory>]
 	  [--shared[=<permissions>]] [directory]
 ```
 
-example:
+### Examples
 ```
 git init /home/user/git-notes/
+
+or
+
+cd /home/user/git-notes/
+git init
 ```
 
 ## git add
-Updating the index for the next commit.
-So by using the 'git add' command you can add new or modified files to the index, before commiting them.
+`git add` updates the index for the next commit.
+The index is the staging area between your working directory and your repository. 
+So by using the 'git add' command you can add new or modified files to the index, before commiting them together.
 
-By using 'git add .' you update the index including everything (new, modified and deleted files altogether).
+>By using 'git add .' you update the index including everything (new, modified and deleted files altogether).
+
 ```
 git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
 	  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
@@ -28,11 +40,12 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 	  [--] [<pathspec>...]
 ```
 
-example:
-```
-git add commands.md
-git add .
-```
+examples:
+|command				|execution																		|
+|-----------------------|-------------------------------------------------------------------------------|
+|`git add commands.md`	|adds *commands.md* to the index													|
+|`git add .`			|adds all new and modified files from the **working directory**					|
+|`git add --all`		|same as `git add .` but including the **whole** project						|
 
 ## git commit
 
@@ -44,7 +57,11 @@ git add .
 
 # Source:
 https://git-scm.com/docs/git-init
+
 https://git-scm.com/docs/git-add
+
 https://git-scm.com/docs/git-commit
+
 https://git-scm.com/docs/git-pull
+
 https://git-scm.com/docs/git-push
