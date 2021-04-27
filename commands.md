@@ -1,4 +1,5 @@
-# Git Commands
+Git Commands
+=============
 This is a little "documentary" for git commands on what they are, what they do and how to use them.
 
 ## git init
@@ -48,20 +49,36 @@ examples:
 |`git add --all`		|same as `git add .` but including the **whole** project						|
 
 ## git commit
+`git commit` records the changes made to the repository by committing the current contents of the index and the given log message, to describe the changes made.
 
+### Synopsis
+```
+git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
+	   [--dry-run] [(-c | -C | --fixup | --squash) <commit>]
+	   [-F <file> | -m <msg>] [--reset-author] [--allow-empty]
+	   [--allow-empty-message] [--no-verify] [-e] [--author=<author>]
+	   [--date=<date>] [--cleanup=<mode>] [--[no-]status]
+	   [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]
+	   [-S[<keyid>]] [--] [<pathspec>…​]
+```
+### Examples
+
+```
+git add commands.md
+git commit -m "added commands.md"
+```
 
 ## git pull
+### Synopsis
+### Examples
 
 ## git push
+### Synopsis
+### Examples
 
-
-# Source:
-https://git-scm.com/docs/git-init
-
-https://git-scm.com/docs/git-add
-
-https://git-scm.com/docs/git-commit
-
-https://git-scm.com/docs/git-pull
-
-https://git-scm.com/docs/git-push
+# Sources
+* https://git-scm.com/docs/git-init
+* https://git-scm.com/docs/git-add
+* https://git-scm.com/docs/git-commit
+* https://git-scm.com/docs/git-pull
+* https://git-scm.com/docs/git-push
