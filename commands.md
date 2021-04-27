@@ -69,12 +69,40 @@ git commit -m "added commands.md"
 ```
 
 ## git pull
+`git pull` fetches from a repository and integrates it with another repository or a local branch.
+
+
 ### Synopsis
+```
+git pull [<options>] [<repository> [<refspec>…​]]
+```
 ### Examples
+```
+git pull (default parameter is 'origin')
+
+git pull origin
+```
+
 
 ## git push
+`git push` updates the remote refs using the local ones.
 ### Synopsis
+```
+git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pack>]
+	   [--repo=<repository>] [-f | --force] [-d | --delete] [--prune] [-v | --verbose]
+	   [-u | --set-upstream] [-o <string> | --push-option=<string>]
+	   [--[no-]signed|--signed=(true|false|if-asked)]
+	   [--force-with-lease[=<refname>[:<expect>]] [--force-if-includes]]
+	   [--no-verify] [<repository> [<refspec>…​]]
+```
 ### Examples
+```
+git push (default parameter is 'origin')
+
+git push origin
+
+git push <remote> (remote is the current branch's remote)
+```
 
 # Sources
 * https://git-scm.com/docs/git-init
