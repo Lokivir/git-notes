@@ -104,9 +104,35 @@ git push origin
 git push <remote> (remote is the current branch's remote)
 ```
 
+## git status
+`git status` shows the working tree status and it's changes or rather the differences between the index and the current HEAD (commit reference) commit.
+
+### Synopsis
+```
+git status [<options>...] [--] [<pathspec>...]
+```
+
+## git log
+`git log` shows the commit log. The output of the commit history is given in reverse chronological order by default.
+
+### Synopsis
+```
+git log [<options>] [<revision range>] [[--] <path>...]
+```
+### Examples
+```
+git log
+
+git log --no-merges (shows whole commit history, skips merges)
+
+git log --since="2 weeks ago" main (shows commit history of 2 weeks of the branch 'main')
+```
+
 # Sources
 * https://git-scm.com/docs/git-init
 * https://git-scm.com/docs/git-add
 * https://git-scm.com/docs/git-commit
 * https://git-scm.com/docs/git-pull
 * https://git-scm.com/docs/git-push
+* https://git-scm.com/docs/git-status
+* https://git-scm.com/docs/git-log
