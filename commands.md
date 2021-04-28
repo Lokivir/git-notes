@@ -128,6 +128,45 @@ git log --no-merges (shows whole commit history, skips merges)
 git log --since="2 weeks ago" main (shows commit history of 2 weeks of the branch 'main')
 ```
 
+## git reset
+`git reset` resets the current HEAD to any specified state.
+
+### Synopsis
+```
+git reset [-q] [<tree-ish>] [--] <pathspec>…?
+git reset [-q] [--pathspec-from-file=<file> [--pathspec-file-nul]] [<tree-ish>]
+git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>…?]
+git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
+```
+### Examples
+```
+git reset
+
+git reset --soft HEAD^
+
+git reset --hard origin/main
+```
+
+## git fetch
+`git fetch` downloads objects and refs from other repositories from either a single named repository or URL, or from multiple repositories if <group> is given.
+When no remote is specified it defaults to `origin`.
+
+### Synopsis
+```
+git fetch [<options>] [<repository> [<refspec>…?]]
+git fetch [<options>] <group>
+git fetch --multiple [<options>] [(<repository> | <group>)…?]
+git fetch --all [<options>]
+```
+### Examples
+```
+git fetch origin
+
+git fetch --all
+
+git fetch https://github.com/Lokivir/git-notes.git
+```
+
 # Sources
 * https://git-scm.com/docs/git-init
 * https://git-scm.com/docs/git-add
@@ -136,3 +175,5 @@ git log --since="2 weeks ago" main (shows commit history of 2 weeks of the branc
 * https://git-scm.com/docs/git-push
 * https://git-scm.com/docs/git-status
 * https://git-scm.com/docs/git-log
+* https://git-scm.com/docs/git-reset
+* https://git-scm.com/docs/git-fetch
