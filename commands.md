@@ -28,11 +28,12 @@ git init
 
 ## git add
 `git add` updates the index for the next commit.
-The index is the staging area between your working directory and your repository. 
-So by using the 'git add' command you can add new or modified files to the index, before commiting them together.
+The index is the staging area between your working directory (or working copy) and your repository. 
+So by using the 'git add' command you can add new or modified files (changes to be commited) to the index, before committing them together to the repository.
 
 >By using 'git add .' you update the index including everything (new, modified and deleted files altogether).
 
+### Synopsis
 ```
 git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
 	  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
@@ -41,7 +42,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 	  [--] [<pathspec>...]
 ```
 
-examples:
+### Examples
 |command				|execution																		|
 |-----------------------|-------------------------------------------------------------------------------|
 |`git add commands.md`	|adds *commands.md* to the index													|
@@ -49,7 +50,7 @@ examples:
 |`git add --all`		|same as `git add .` but including the **whole** project						|
 
 ## git commit
-`git commit` records the changes made to the repository by committing the current contents of the index and the given log message, to describe the changes made.
+`git commit` records the changes made to the index (staged files) by committing them with a log message to the repository.
 
 ### Synopsis
 ```
@@ -85,7 +86,7 @@ git pull origin
 
 
 ## git push
-`git push` updates the remote refs using the local ones.
+`git push` updates the remote repository by uploading and synchronizing it with the local one.
 ### Synopsis
 ```
 git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pack>]
@@ -105,7 +106,7 @@ git push <remote> (remote is the current branch's remote)
 ```
 
 ## git status
-`git status` shows the working tree status and it's changes or rather the differences between the index and the current HEAD (commit reference) commit.
+`git status` shows if there are any modified files to be staged, what files are already staged and by that, what can be committed.
 
 ### Synopsis
 ```
@@ -133,9 +134,9 @@ git log --since="2 weeks ago" main (shows commit history of 2 weeks of the branc
 
 ### Synopsis
 ```
-git reset [-q] [<tree-ish>] [--] <pathspec>…?
+git reset [-q] [<tree-ish>] [--] <pathspec>ï¿½?
 git reset [-q] [--pathspec-from-file=<file> [--pathspec-file-nul]] [<tree-ish>]
-git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>…?]
+git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>ï¿½?]
 git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
 ```
 ### Examples
@@ -153,9 +154,9 @@ When no remote is specified it defaults to `origin`.
 
 ### Synopsis
 ```
-git fetch [<options>] [<repository> [<refspec>…?]]
+git fetch [<options>] [<repository> [<refspec>ï¿½?]]
 git fetch [<options>] <group>
-git fetch --multiple [<options>] [(<repository> | <group>)…?]
+git fetch --multiple [<options>] [(<repository> | <group>)ï¿½?]
 git fetch --all [<options>]
 ```
 ### Examples
