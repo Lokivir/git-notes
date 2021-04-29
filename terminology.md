@@ -18,3 +18,4 @@ Terminology
 |argument                   |"git `commit` -m 'Hello'"                                                                                      |
 |option                     |"git commit `-m` 'Hello'"                                                                                      |
 |option value               |"git commit -m `'Hello'`"                                                                                      |
+|snapshot                   |a snapshot is the content (files and directories) of a repository at some point in time                        |
