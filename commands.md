@@ -60,7 +60,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 	   [--allow-empty-message] [--no-verify] [-e] [--author=<author>]
 	   [--date=<date>] [--cleanup=<mode>] [--[no-]status]
 	   [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	   [-S[<keyid>]] [--] [<pathspec>…​]
+	   [-S[<keyid>]] [--] [<pathspec>...]
 ```
 ### Examples
 
@@ -75,7 +75,7 @@ git commit -m "added commands.md"
 
 ### Synopsis
 ```
-git pull [<options>] [<repository> [<refspec>…​]]
+git pull [<options>] [<repository> [<refspec>...]]
 ```
 ### Examples
 ```
@@ -94,7 +94,7 @@ git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run]
 	   [-u | --set-upstream] [-o <string> | --push-option=<string>]
 	   [--[no-]signed|--signed=(true|false|if-asked)]
 	   [--force-with-lease[=<refname>[:<expect>]] [--force-if-includes]]
-	   [--no-verify] [<repository> [<refspec>…​]]
+	   [--no-verify] [<repository> [<refspec>...]]
 ```
 ### Examples
 ```
@@ -131,12 +131,13 @@ git log --since="2 weeks ago" main (shows commit history of 2 weeks of the branc
 
 ## git reset
 `git reset` resets the current HEAD to any specified state.
+Be careful with this, because `git reset` is a destructive operation, as it can (an will) delete unsynchronized parts of your local working copy.
 
 ### Synopsis
 ```
-git reset [-q] [<tree-ish>] [--] <pathspec>�?
+git reset [-q] [<tree-ish>] [--] <pathspec>...
 git reset [-q] [--pathspec-from-file=<file> [--pathspec-file-nul]] [<tree-ish>]
-git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>�?]
+git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>...]
 git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
 ```
 ### Examples
@@ -154,9 +155,9 @@ When no remote is specified it defaults to `origin`.
 
 ### Synopsis
 ```
-git fetch [<options>] [<repository> [<refspec>�?]]
+git fetch [<options>] [<repository> [<refspec>...]]
 git fetch [<options>] <group>
-git fetch --multiple [<options>] [(<repository> | <group>)�?]
+git fetch --multiple [<options>] [(<repository> | <group>)...]
 git fetch --all [<options>]
 ```
 ### Examples
@@ -168,6 +169,79 @@ git fetch --all
 git fetch https://github.com/Lokivir/git-notes.git
 ```
 
+## git rm
+`git rm` removes files from the working copy and the index/staging area.
+
+### Synopsis
+```
+git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]
+	  [--quiet] [--pathspec-from-file=<file> [--pathspec-file-nul]]
+	  [--] [<pathspec>...]
+```
+
+### Examples
+```
+git rm ./\*.md (removes all *.md files from the current directory and its subdiretories)
+
+git rm -f ./commands.md (removes the commands.md file from the current directory)
+```
+## git mv
+With `git mv` you can move or rename a file, a directory or a symlink (link to a file or directory).
+
+### Synopsis
+```
+git mv <options>... <args>...
+```
+
+### Examples
+```
+git mv commands.md ./test/ (moves commands.md into the "test" directory)
+```
+
+## git diff
+`git diff` shows changes made between commits. If you add modified files to the staging area, `git diff` won't show you anything different, because you already added them. It will only work before adding something to the staging area.
+
+### Synopsis
+```
+git diff [<options>] [<commit>] [--] [<path>...]
+git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]
+git diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]
+git diff [<options>] <commi...​<commit> [--] [<path>...]
+git diff [<options>] <blob> <blob>
+git diff [<options>] --no-index [--] <path> <path>
+```
+
+### Examples
+#### Check working copy
+```
+git diff 				(1)
+
+git diff --cached		(2)
+
+git diff HEAD			(3)
+```
+1. Changes in the working tree not yet staged for the next commit.
+
+2. Changes between the index and your last commit; what you would be committing if you run git commit without -a option.
+
+3. Changes in the working tree since your last commit; what you would be committing if you run git commit -a
+
+#### Comparing with arbitrary commits
+```
+git diff master			(1)
+
+git diff HEAD^ HEAD		(2)
+```
+1. Instead of using the tip of the current branch, compare with the tip of "test" branch.
+2. Compare the version before the last commit and the last commit.
+
+#### Comparing branches
+```
+git diff main master
+```
+Changes between the tips of the topic and the master branches.
+
+
 # Sources
 * https://git-scm.com/docs/git-init
 * https://git-scm.com/docs/git-add
@@ -178,3 +252,6 @@ git fetch https://github.com/Lokivir/git-notes.git
 * https://git-scm.com/docs/git-log
 * https://git-scm.com/docs/git-reset
 * https://git-scm.com/docs/git-fetch
+* https://git-scm.com/docs/git-rm
+* https://git-scm.com/docs/git-mv
+* https://git-scm.com/docs/git-diff
