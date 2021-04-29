@@ -43,11 +43,11 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 ```
 
 ### Examples
-|command				|execution																		|
-|-----------------------|-------------------------------------------------------------------------------|
-|`git add commands.md`	|adds *commands.md* to the index													|
-|`git add .`			|adds all new and modified files from the **working directory**					|
-|`git add --all`		|same as `git add .` but including the **whole** project						|
+|command				|execution														|
+|-----------------------|---------------------------------------------------------------|
+|`git add commands.md`	|adds *commands.md* to the index								|
+|`git add .`			|adds all new and modified files from the **working directory**	|
+|`git add --all`		|same as `git add .` but including the **whole** project		|
 
 ## git commit
 `git commit` records the changes made to the index (staged files) by committing them with a log message to the repository.
