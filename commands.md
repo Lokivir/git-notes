@@ -39,7 +39,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 	  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
 	  [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing] [--renormalize]
 	  [--chmod=(+|-)x] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	  [--] [<pathspec>...]
+	  [--] [<pathspec>…​]
 ```
 
 ### Examples
@@ -60,7 +60,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 	   [--allow-empty-message] [--no-verify] [-e] [--author=<author>]
 	   [--date=<date>] [--cleanup=<mode>] [--[no-]status]
 	   [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	   [-S[<keyid>]] [--] [<pathspec>...]
+	   [-S[<keyid>]] [--] [<pathspec>…​]
 ```
 ### Examples
 
@@ -75,7 +75,7 @@ git commit -m "added commands.md"
 
 ### Synopsis
 ```
-git pull [<options>] [<repository> [<refspec>...]]
+git pull [<options>] [<repository> [<refspec>…​]]
 ```
 ### Examples
 ```
@@ -94,7 +94,7 @@ git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run]
 	   [-u | --set-upstream] [-o <string> | --push-option=<string>]
 	   [--[no-]signed|--signed=(true|false|if-asked)]
 	   [--force-with-lease[=<refname>[:<expect>]] [--force-if-includes]]
-	   [--no-verify] [<repository> [<refspec>...]]
+	   [--no-verify] [<repository> [<refspec>…​]]
 ```
 ### Examples
 ```
@@ -110,7 +110,7 @@ git push <remote> (remote is the current branch's remote)
 
 ### Synopsis
 ```
-git status [<options>...] [--] [<pathspec>...]
+git status [<options>…​] [--] [<pathspec>…​]
 ```
 
 ## git log
@@ -118,7 +118,7 @@ git status [<options>...] [--] [<pathspec>...]
 
 ### Synopsis
 ```
-git log [<options>] [<revision range>] [[--] <path>...]
+git log [<options>] [<revision range>] [[--] <path>…​]
 ```
 ### Examples
 ```
@@ -135,9 +135,9 @@ Be careful with this, because `git reset` is a destructive operation, as it can 
 
 ### Synopsis
 ```
-git reset [-q] [<tree-ish>] [--] <pathspec>...
+git reset [-q] [<tree-ish>] [--] <pathspec>…​
 git reset [-q] [--pathspec-from-file=<file> [--pathspec-file-nul]] [<tree-ish>]
-git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>...]
+git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>…​]
 git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
 ```
 ### Examples
@@ -155,9 +155,9 @@ When no remote is specified it defaults to `origin`.
 
 ### Synopsis
 ```
-git fetch [<options>] [<repository> [<refspec>...]]
+git fetch [<options>] [<repository> [<refspec>…​]]
 git fetch [<options>] <group>
-git fetch --multiple [<options>] [(<repository> | <group>)...]
+git fetch --multiple [<options>] [(<repository> | <group>)…​]
 git fetch --all [<options>]
 ```
 ### Examples
@@ -176,7 +176,7 @@ git fetch https://github.com/Lokivir/git-notes.git
 ```
 git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]
 	  [--quiet] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	  [--] [<pathspec>...]
+	  [--] [<pathspec>…​]
 ```
 
 ### Examples
@@ -190,7 +190,7 @@ With `git mv` you can move or rename a file, a directory or a symlink (link to a
 
 ### Synopsis
 ```
-git mv <options>... <args>...
+git mv <options>…​ <args>…​
 ```
 
 ### Examples
@@ -203,10 +203,10 @@ git mv commands.md ./test/ (moves commands.md into the "test" directory)
 
 ### Synopsis
 ```
-git diff [<options>] [<commit>] [--] [<path>...]
-git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>...]
-git diff [<options>] [--merge-base] <commit> [<commit>...] <commit> [--] [<path>...]
-git diff [<options>] <commi...​<commit> [--] [<path>...]
+git diff [<options>] [<commit>] [--] [<path>…​]
+git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>…​]
+git diff [<options>] [--merge-base] <commit> [<commit>…​] <commit> [--] [<path>…​]
+git diff [<options>] <commi…​​<commit> [--] [<path>…​]
 git diff [<options>] <blob> <blob>
 git diff [<options>] --no-index [--] <path> <path>
 ```
