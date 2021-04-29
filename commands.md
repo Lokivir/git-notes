@@ -51,6 +51,7 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 
 ## git commit
 `git commit` records the changes made to the index (staged files) by committing them with a log message to the repository.
+>By using `git commit --amend` you can combine staged changes with the previous commit instead of creating a new commit and to edit the previous commit message without changing its snapshot.
 
 ### Synopsis
 ```
@@ -200,6 +201,7 @@ git mv commands.md ./test/ (moves commands.md into the "test" directory)
 
 ## git diff
 `git diff` shows changes made between commits. If you add modified files to the staging area, `git diff` won't show you anything different, because you already added them. It will only work before adding something to the staging area.
+>If you have already staged some files, you can use `git diff --staged` to see the difference made.
 
 ### Synopsis
 ```
