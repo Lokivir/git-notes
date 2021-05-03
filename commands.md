@@ -9,7 +9,7 @@ Running it in an existing repository is safe, because it won't overwrite anythin
 You want to rerun  it, either to pick up added templates or to move it to another place (if `--separate-git-dir` is given).
 
 ### Synopsis
-```
+```bash
 git init [-q | --quiet] [--bare] [--template=<template_directory>]
 	  [--separate-git-dir <git dir>] [--object-format=<format>]
 	  [-b <branch-name> | --initial-branch=<branch-name>]
@@ -17,7 +17,7 @@ git init [-q | --quiet] [--bare] [--template=<template_directory>]
 ```
 
 ### Examples
-```
+```bash
 git init /home/user/git-notes/
 
 or
@@ -34,12 +34,12 @@ So by using the 'git add' command you can add new or modified files (changes to 
 >By using 'git add .' you update the index including everything (new, modified and deleted files altogether).
 
 ### Synopsis
-```
+```bash
 git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
 	  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
 	  [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing] [--renormalize]
 	  [--chmod=(+|-)x] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	  [--] [<pathspec>…​]
+	  [--] [<pathspec>â€¦â€‹]
 ```
 
 ### Examples
@@ -54,18 +54,18 @@ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [-
 >By using `git commit --amend` you can combine staged changes with the previous commit instead of creating a new commit and to edit the previous commit message without changing its snapshot.
 
 ### Synopsis
-```
+```bash
 git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 	   [--dry-run] [(-c | -C | --fixup | --squash) <commit>]
 	   [-F <file> | -m <msg>] [--reset-author] [--allow-empty]
 	   [--allow-empty-message] [--no-verify] [-e] [--author=<author>]
 	   [--date=<date>] [--cleanup=<mode>] [--[no-]status]
 	   [-i | -o] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	   [-S[<keyid>]] [--] [<pathspec>…​]
+	   [-S[<keyid>]] [--] [<pathspec>â€¦â€‹]
 ```
 ### Examples
 
-```
+```bash
 git add commands.md
 git commit -m "added commands.md"
 ```
@@ -75,11 +75,11 @@ git commit -m "added commands.md"
 
 
 ### Synopsis
-```
-git pull [<options>] [<repository> [<refspec>…​]]
+```bash
+git pull [<options>] [<repository> [<refspec>â€¦â€‹]]
 ```
 ### Examples
-```
+```bash
 git pull (default parameter is 'origin')
 
 git pull origin
@@ -89,40 +89,40 @@ git pull origin
 ## git push
 `git push` updates the remote repository by uploading and synchronizing it with the local one.
 ### Synopsis
-```
+```bash
 git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pack>]
 	   [--repo=<repository>] [-f | --force] [-d | --delete] [--prune] [-v | --verbose]
 	   [-u | --set-upstream] [-o <string> | --push-option=<string>]
 	   [--[no-]signed|--signed=(true|false|if-asked)]
 	   [--force-with-lease[=<refname>[:<expect>]] [--force-if-includes]]
-	   [--no-verify] [<repository> [<refspec>…​]]
+	   [--no-verify] [<repository> [<refspec>â€¦â€‹]]
 ```
 ### Examples
-```
+```bash
 git push (default parameter is 'origin')
 
 git push origin
 
-git push <remote> (remote is the current branch's remote)
+git push <remote> (remote is the current branchs remote)
 ```
 
 ## git status
 `git status` shows if there are any modified files to be staged, what files are already staged and by that, what can be committed.
 
 ### Synopsis
-```
-git status [<options>…​] [--] [<pathspec>…​]
+```bash
+git status [<options>â€¦â€‹] [--] [<pathspec>â€¦â€‹]
 ```
 
 ## git log
 `git log` shows the commit log. The output of the commit history is given in reverse chronological order by default.
 
 ### Synopsis
-```
-git log [<options>] [<revision range>] [[--] <path>…​]
+```bash
+git log [<options>] [<revision range>] [[--] <path>â€¦â€‹]
 ```
 ### Examples
-```
+```bash
 git log
 
 git log --no-merges (shows whole commit history, skips merges)
@@ -135,14 +135,14 @@ git log --since="2 weeks ago" main (shows commit history of 2 weeks of the branc
 Be careful with this, because `git reset` is a destructive operation, as it can (an will) delete unsynchronized parts of your local working copy.
 
 ### Synopsis
-```
-git reset [-q] [<tree-ish>] [--] <pathspec>…​
+```bash
+git reset [-q] [<tree-ish>] [--] <pathspec>â€¦â€‹
 git reset [-q] [--pathspec-from-file=<file> [--pathspec-file-nul]] [<tree-ish>]
-git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>…​]
+git reset (--patch | -p) [<tree-ish>] [--] [<pathspec>â€¦â€‹]
 git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
 ```
 ### Examples
-```
+```bash
 git reset
 
 git reset --soft HEAD^
@@ -155,14 +155,14 @@ git reset --hard origin/main
 When no remote is specified it defaults to `origin`.
 
 ### Synopsis
-```
-git fetch [<options>] [<repository> [<refspec>…​]]
+```bash
+git fetch [<options>] [<repository> [<refspec>â€¦â€‹]]
 git fetch [<options>] <group>
-git fetch --multiple [<options>] [(<repository> | <group>)…​]
+git fetch --multiple [<options>] [(<repository> | <group>)â€¦â€‹]
 git fetch --all [<options>]
 ```
 ### Examples
-```
+```bash
 git fetch origin
 
 git fetch --all
@@ -174,14 +174,14 @@ git fetch https://github.com/Lokivir/git-notes.git
 `git rm` removes files from the working copy and the index/staging area.
 
 ### Synopsis
-```
+```bash
 git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]
 	  [--quiet] [--pathspec-from-file=<file> [--pathspec-file-nul]]
-	  [--] [<pathspec>…​]
+	  [--] [<pathspec>â€¦â€‹]
 ```
 
 ### Examples
-```
+```bash
 git rm ./\*.md (removes all *.md files from the current directory and its subdiretories)
 
 git rm -f ./commands.md (removes the commands.md file from the current directory)
@@ -190,12 +190,12 @@ git rm -f ./commands.md (removes the commands.md file from the current directory
 With `git mv` you can move or rename a file, a directory or a symlink (link to a file or directory).
 
 ### Synopsis
-```
-git mv <options>…​ <args>…​
+```bash
+git mv <options>â€¦â€‹ <args>â€¦â€‹
 ```
 
 ### Examples
-```
+```bash
 git mv commands.md ./test/ (moves commands.md into the "test" directory)
 ```
 
@@ -204,18 +204,18 @@ git mv commands.md ./test/ (moves commands.md into the "test" directory)
 >If you have already staged some files, you can use `git diff --staged` to see the difference made.
 
 ### Synopsis
-```
-git diff [<options>] [<commit>] [--] [<path>…​]
-git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>…​]
-git diff [<options>] [--merge-base] <commit> [<commit>…​] <commit> [--] [<path>…​]
-git diff [<options>] <commi…​​<commit> [--] [<path>…​]
+```bash
+git diff [<options>] [<commit>] [--] [<path>â€¦â€‹]
+git diff [<options>] --cached [--merge-base] [<commit>] [--] [<path>â€¦â€‹]
+git diff [<options>] [--merge-base] <commit> [<commit>â€¦â€‹] <commit> [--] [<path>â€¦â€‹]
+git diff [<options>] <commiâ€¦â€‹â€‹<commit> [--] [<path>â€¦â€‹]
 git diff [<options>] <blob> <blob>
 git diff [<options>] --no-index [--] <path> <path>
 ```
 
 ### Examples
 #### Check working copy
-```
+```bash
 git diff 				(1)
 
 git diff --cached		(2)
@@ -229,7 +229,7 @@ git diff HEAD			(3)
 3. Changes in the working tree since your last commit; what you would be committing if you run git commit -a
 
 #### Comparing with arbitrary commits
-```
+```bash
 git diff master			(1)
 
 git diff HEAD^ HEAD		(2)
@@ -238,7 +238,7 @@ git diff HEAD^ HEAD		(2)
 2. Compare the version before the last commit and the last commit.
 
 #### Comparing branches
-```
+```bash
 git diff main master
 ```
 Changes between the tips of the topic and the master branches.
