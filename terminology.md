@@ -5,8 +5,8 @@ Terminology
 |---------------------------|---------------------------------------------------------------------------------------------------------------|
 |repository                 |it includes all files with all previous versions                                                               |
 |remote repository          |repositories hosted on any server (e.g. GitHub, GitLab, etc.)                                                  |
-|centralized repository     |is a repository on one machine (either a computer or local server) on which the repository is stored           |
-|decentralized repository   |is a remote repository on the internet or any other network, on which multiple users can access and pull from  |
+|centralized repository     |the repository is located at one place (local machine, server, etc.) and provides access to many clients       |
+|decentralized repository   |every user has a local copy of the repository in addition to the central repository on the server side         |
 |branch                     |copy of the main code for development and testing of different code                                            |
 |merging                    |e.g. merging a branch with the main branch (source code)                                                       |
 |working copy               |a local repository, or a local copy of a repository, which can be accessed and worked on offline               |
@@ -19,3 +19,4 @@ Terminology
 |option                     |"git commit `-m` 'Hello'"                                                                                      |
 |option value               |"git commit -m `'Hello'`"                                                                                      |
 |snapshot                   |a snapshot is the content (files and directories) of a repository at some point in time                        |
+|head                       |points to the last commit made                                                                                 |
