@@ -1,6 +1,17 @@
 Shell commands
 ==============
 
+### Useful commands:
+```bash
+info                    # shows the Info main menu
+help                    # shows internally defined shell commands
+<command> --help        # prints out the usage of a command and its arguments and options
+man <command>           # opens the manual for the specified command
+nano <file>             # opens the nano editor
+echo "" > <file>        # creates a file with given text (overwrites files if it already exists)
+echo "" >> file         # does the same, if the file already exists it adds the text not overwriting it
+```
+
 ### Directory tree navigation:
 ```bash
 pwd                     # prints out the working directory
@@ -33,3 +44,4 @@ ln -s <path> <link>     # creates a symbolic link
 
 # Sources
 * https://www.ernstlx.com/linux90bash.html
+* http://swcarpentry.github.io/shell-novice/02-filedir/index.html
