@@ -20,3 +20,9 @@ Terminology
 |option value               |"git commit -m `'Hello'`"                                                                                      |
 |snapshot                   |a snapshot is the content (files and directories) of a repository at some point in time                        |
 |head                       |points to the last commit made                                                                                 |
+|SSH/Secure Shell           |cryptographic network protocol for operating network services securely over an unsecured network               |
+|Command line               |the command processes commands to a computer in form of lines of text                                          |
+|Shell                      |is a operating system command line interface which processes commands and returns outputs (e.g. bash in Linux) |
+|Terminal                   |is a program that runs a shell in a window                                                                     |
+|Console                    |is a physical device, e.g. keyboard and monitor attached to the computer                                       |
+|Virtual Console            |in Linux virtual consoles can be accessed by the combinations `Ctrl` + `Alt` + `F1 to F7`                      |
