@@ -243,6 +243,60 @@ git diff main master
 ```
 Changes between the tips of the topic and the master branches.
 
+## git clone
+As the name suggests, `git clone` clones a repository into a newly created directory, creates remote-tracking branches for each branch and creates and checks out an initial branch from the cloned repository's active branch.
+
+### Synopsis
+```bash
+git clone [--template=<template_directory>]
+	  [-l] [-s] [--no-hardlinks] [-q] [-n] [--bare] [--mirror]
+	  [-o <name>] [-b <name>] [-u <upload-pack>] [--reference <repository>]
+	  [--dissociate] [--separate-git-dir <git dir>]
+	  [--depth <depth>] [--[no-]single-branch] [--no-tags]
+	  [--recurse-submodules[=<pathspec>]] [--[no-]shallow-submodules]
+	  [--[no-]remote-submodules] [--jobs <n>] [--sparse]
+	  [--filter=<filter>] [--] <repository>
+	  [<directory>]
+
+```
+### Examples
+```
+git clone https://github.com/Lokivir/git-notes.git
+
+git clone --bare https://github.com/Lokivir/git-notes.git
+```
+
+## git remote
+`git remote` manages the set of repositories, your "remotes", whose branches you track.
+
+### Synopsis
+```bash
+git remote [-v | --verbose]
+git remote add [-t <branch>] [-m <master>] [-f] [--[no-]tags] [--mirror=(fetch|push)] <name> <url>
+git remote rename <old> <new>
+git remote remove <name>
+git remote set-head <name> (-a | --auto | -d | --delete | <branch>)
+git remote set-branches [--add] <name> <branch>…​
+git remote get-url [--push] [--all] <name>
+git remote set-url [--push] <name> <newurl> [<oldurl>]
+git remote set-url --add [--push] <name> <newurl>
+git remote set-url --delete [--push] <name> <url>
+git remote [-v | --verbose] show [-n] <name>…​
+git remote prune [-n | --dry-run] <name>…​
+git remote [-v | --verbose] update [-p | --prune] [(<group> | <remote>)…​]
+```
+
+### Examples
+```bash
+git remote show origin
+# * remote origin
+#   Fetch URL: https://github.com/Lokivir/git-notes.git
+#   Push  URL: https://github.com/Lokivir/git-notes.git
+#   HEAD branch: main
+#   Local ref configured for 'git push':
+#     main pushes to main (up to date)
+
+```
 
 # Sources
 * https://git-scm.com/docs/git-init
@@ -257,3 +311,5 @@ Changes between the tips of the topic and the master branches.
 * https://git-scm.com/docs/git-rm
 * https://git-scm.com/docs/git-mv
 * https://git-scm.com/docs/git-diff
+* https://git-scm.com/docs/git-clone
+* https://git-scm.com/docs/git-remote
