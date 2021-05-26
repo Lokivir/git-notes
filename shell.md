@@ -42,6 +42,21 @@ rename <path>           # renames multiple files by the given pattern
 ln -s <path> <link>     # creates a symbolic link
 ```
 
+### Finding Things
+```bash
+grep <pattern> <path>                       # searches the pattern in the given path
+grep -w <pattern> <path>                    # matches the pattern as exact word
+grep -n <pattern> <path>                    # shows the lines, that contain the pattern
+grep -i <pattern> <path>                    # makes the search case-sensitive
+grep -v <pattern> <path>                    # inverts the search
+grep -r <pattern> <path>                    # recursively searches through a set of files and subdirectories
+grep -E <pattern> <path>                    # the pattern is an extended relugal expression i.e. "^.opt"
+find <path> -type d                         # lists all directories in the given path and its subdirectories
+find <path> -type f                         # same as above, but finds all files
+find <path> -name "*.txt"                   # lists all files ending with .txt
+find grep -n "opt" $(find . -name "*.md")   # finds all .md files in the given path and then searches for the pattern "opt"
+```
+
 # Sources
 * https://www.ernstlx.com/linux90bash.html
 * http://swcarpentry.github.io/shell-novice/02-filedir/index.html
