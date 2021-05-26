@@ -60,3 +60,4 @@ find grep -n "opt" $(find . -name "*.md")   # finds all .md files in the given p
 # Sources
 * https://www.ernstlx.com/linux90bash.html
 * http://swcarpentry.github.io/shell-novice/02-filedir/index.html
+* http://swcarpentry.github.io/shell-novice/07-find/index.html
