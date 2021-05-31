@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSH and Git</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { 
+  font-family: "Droid Serif", Helvetica, Arial, sans-serif;
+  background-color:whitesmoke;
+  line-height:1.7em
+}
+
+h1, h2, h3 {
+  margin-top:.4em;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  color:#00004d;
+}
+
+h1 {
+  text-align:center;
+}
+
+h3 {
+  margin:0;
+  padding:0;
+}
+
+a, a code {
+  color:#336699;
+  text-decoration:none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  margin:0;
+  padding:.3em;
+  font-weight:bold;
+  text-align:left;
+  border-bottom: 1px solid;
+}
+
+td {
+  padding:.3em;
+  margin:0;
+  border-right: 1px solid;
+  vertical-align:top;
+}
+
+td:last-child {
+  border-right:0;
+}
+
+
+pre code {
+  display: block;
+  padding: 9.5px;
+  line-height: 1;
+  font-size: 0.8em;
+  overflow:auto;
+  width:auto;
+  white-space: pre-wrap;
+}
+
+.remark-code,
+.hljs-default .hljs {
+            font:14px/1.2 "Courier New", Courier, monospace;
+            background:none;
+            border-radius:2px;
+            border: 1px solid lightgray;
+}
+
+.remark-inline-code {
+            background-color:#ecf2f9;
+            border-radius:2px;
+            font-size:17px;
+            padding-left:2.8px;
+            padding-right:2.8px;
+            color:#0d1a26;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+# <center>SSH Key Authentication</center>
+_<center>Creating and copying your SSH-Key</center>_
+</br>
+
+By using the `ssh` **command** with the **argument** `$USER@hostname`,
+you connect with the given **user** to the specified **hostname** using the SSH protocol.
+
+1. Generate a **private Key** on your local machine
+    * `ssh-keygen -q -f ~/.ssh/id_rsa -t rsa`
+        * creates `id_rsa (private Key)` and `id_rsa.pub (public key)`
+2. Copy your Key to the remote hostname
+   * `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@hostname`
+3. log into your account on the hostname
+   * `ssh $USER@hostname`
+
+---
+
+# SSH Agent
+</br>
+
+The `ssh-agent` is a **key manager** for SSH. It loads your credentials **unencrypted into memory**,
+ready for `SSH` usage.</br>
+It saves you the time to type in your credentials every time you **connect** to the server.
+
+Private Keys stay safe, because the `ssh-agent`
+* **doesn't write** any key material **to disk** and
+* **doesn't allow** private keys to be **exported**.
+
+Stored keys can only be used to signing a message.
+
+With `ssh add` you add your keys to a running `ssh-agent`.
+
+
+---
+
+# GUI applications
+
+</br>
+</br>
+To start a GUI application on a **remote machine** the simple `ssh` **command** isn't enough.
+
+By simply connecting and trying to run e.g. `firefox`, you get the **error**:</br>
+`Error: no DISPLAY environment variable specified`
+
+So to run GUI applications successfully, **trusted X11 forwarding** has to be enabled with the **option** `-Y`.
+
+* Open your **terminal**
+* Use the `-Y` **option** of the `ssh` **command**
+* Connect to the remote hostname with `ssh -Y $USER@hostname`
+
+---
+
+# Difficulties
+
+</br>
+</br>
+</br>
+* Understanding Git bare-repositories at first
+    * tried using `pull` on bare repo
+* `git remote`
+* `ssh-agent` functionality
+
+---
+
+# Additional resources
+</br>
+</br>
+* https://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/
+* https://askubuntu.com/a/507138
+* https://smallstep.com/blog/ssh-agent-explained/#:~:text=ssh-agent%20is%20a%20key,you%20connect%20to%20a%20server.
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Variables</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { 
+  font-family: "Droid Serif", Helvetica, Arial, sans-serif;
+  background-color:whitesmoke;
+  line-height:1.7em
+}
+
+h1, h2, h3 {
+  margin-top:.4em;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  color:#00004d;
+}
+
+h1 {
+  text-align:center;
+}
+
+h3 {
+  margin:0;
+  padding:0;
+}
+
+a, a code {
+  color:#336699;
+  text-decoration:none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  margin:0;
+  padding:.3em;
+  font-weight:bold;
+  text-align:left;
+  border-bottom: 1px solid;
+}
+
+td {
+  padding:.3em;
+  margin:0;
+  border-right: 1px solid;
+  vertical-align:top;
+}
+
+td:last-child {
+  border-right:0;
+}
+
+
+pre code {
+  display: block;
+  padding: 9.5px;
+  line-height: 1;
+  font-size: 0.8em;
+  overflow:auto;
+  width:auto;
+  white-space: pre-wrap;
+}
+
+.remark-code,
+.hljs-default .hljs {
+            font:14px/1.2 "Courier New", Courier, monospace;
+            background:none;
+            border-radius:2px;
+            border: 1px solid lightgray;
+}
+
+.remark-inline-code {
+            background-color:#ecf2f9;
+            border-radius:2px;
+            font-size:17px;
+            padding-left:2.8px;
+            padding-right:2.8px;
+            color:#0d1a26;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+`name=` declares and initializes variable `name` without value or overwrites existing variable
+
+`name=j dow`
+```bash
+name=j dow
+
+Command 'dow' not found, did you mean:
+
+  command 'dog' from snap dog (0.1.0)
+  command 'sow' from deb ruby-hoe (3.21.0+dfsg1-1)
+  command 'cow' from deb fl-cow (0.6-4.2)
+  command 'dot' from deb graphviz (2.42.2-3build2)
+
+See 'snap info <snapname>' for additional versions.
+```
+white-space character lets shell interpret value as __command__
+
+`name='j dow'`
+sets value of `name` to `"j dow"`
+
+`name='j d'ow`
+sets value of `name` to `"j dow"`
+
+`name=j' 'dow`
+sets value of `name` to `"j dow"`
+
+`name='j\tdow\n\n\n'`
+sets value of `name` to `"j\tdow\n\n\n"`
+
+---
+
+`name=j'dow`
+sets value of `name` to `"jdow"` but leaves command line open to more input, until a `'` is given
+e.g.
+```bash
+name=j'dow
+> s
+> s
+> '
+```
+
+`name=j\'dow`
+sets value of `name` to `"j'dow"`
+
+`name=j $dow`
+sets value of `name` to `"j [$dow]"`, whereas [$dow] stands for the variable dow, which has to be initialized and declared
+
+`name="j \$dow"`
+sets value of `name` to `"j $dow"`
+
+`name="j ${dow}s"`
+sets value of `name` to `"j [${dow}]s]"`, where the variable `$dow` is being expanded by an `s`
+
+`name=$(echo jdow)`
+sets value of `name` to the command `echo` with the text `"jdow"` to be printed
+
+---
+
+# non-printable, special characters and
+# escaping
+<br>
+
+* non-printable
+  * non-printable characters are, as the name suggests, non-printable
+  * this means they are characters such as `\n`, `Escape`, `Null`
+  * they represent commands for the computer to execute, like a new line by using `\n`
+* special-characters
+  * special-characters are characters that have a special function in many cases
+  * `$` for example is used to indicate, that the following text is a variable of sorts
+* escaping
+  * escaping means to save special-characters such as `\`, `$` and `#` by using a backslash (`\`)
+  * this has to be done, or else the special-characters can be interpreted the wrong way
+
+ 
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
