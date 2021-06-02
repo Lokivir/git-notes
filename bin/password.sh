@@ -43,15 +43,13 @@ add_entry()
                     echo "Login:" ; read new_entry_l
                     echo "Password:" ; read -s new_entry_p
                     echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_FILE}/passwords"
-                    return 0
-                    ;;
+                    return 0 ;;
                 [Nn]*)
                     echo "Entry wasn't added..."
                     break ;;
                 *)
                     duplicate_entry=""
-                    echo "Please answer with (Y/n)"
-                    ;;
+                    echo "Please answer with (Y/n)" ;;
             esac
         done
     fi
@@ -77,11 +75,6 @@ check_entry()
 
 find_entry()
 {
-    # echo "What entry do you want to search for?"
-    # read entry
-    # echo "$(check_entry $entry | cut -d " " -f 1-3)" # 1-2 = Account+Login, 1-3 = Account+Login+Password 
-    # echo ""
-
     echo "What Account are you searching?" ; read account
     local entry=$(check_entry $account)
     echo -e "============================\nYour login details are:"
@@ -130,27 +123,23 @@ if [[ ! -f $PASSWORDS ]] ; then
                     case "$query" in
                         [Yy]*)
                             add_entry
-                            query=""
-                            ;;
+                            query="" ;;
                         [Nn]*)
                             echo "Saving and encrypting file..."
                             encrypt_file
                             exit ;;
                         *)
                             query=""
-                            echo "Please answer with (Y/n)2"
-                            ;;
+                            echo "Please answer with (Y/n)" ;;
                     esac
                 done
                 ;;
             [Nn]*)
                 echo "File creation aborted. Exiting..."
-                exit
-                ;;
+                exit ;;
             *)
                 create=""
-                echo "Please answer with (Y/n)"
-                ;;
+                echo "Please answer with (Y/n)" ;;
         esac
     done
 fi
@@ -158,44 +147,23 @@ fi
 # If arguments are given, check for the argument
 case "$1" in
     add)
-        if [[ $# -ge 2 ]] ; then
-            echo "New Entry for Account $2"
-            echo "Login:" ; read new_entry_l
-            echo "Password:" ; read -s new_entry_p
-            echo $2' '$new_entry_l' '$new_entry_p >> "${PATH_TO_FILE}/passwords"
-        else
-            echo "--New Entry--"
-            echo "Account:" ; read new_entry_a
-            echo "Login:" ; read new_entry_l
-            echo "Password:" ; read -s new_entry_p
-            echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_FILE}/passwords"
-        fi
-        ;;
-    edit)
-        ;;
-    del)
-        ;;
+        add_entry ;;
+    list|ls)
+        list_entries ;;
     find)
-        if [[ $# -ge 2 ]] ; then
-            list=$(echo "$passwords"| grep "$2")
-            login=$(echo $decryption | cut -d " " -f 2)
-            password=$(echo $decryption | cut -d " " -f 3)
-            echo "============================"
-            echo "Your login details are:"
-            echo "Login: $login"
-            echo "Password: $password"
-            echo "============================"
-        else
-            echo "What Account are you searching?" ; read account
-            list=$(echo "$passwords"| grep "$account")
-            login=$(echo $decryption | cut -d " " -f 2)
-            password=$(echo $decryption | cut -d " " -f 3)
-            echo -e "============================\nYour login details are:"
-            echo "Login: $login"
-            echo "Password: $password"
-            echo "============================"
-        fi
-        ;;
+        find_entry ;;
+    edit)
+        echo -e "\nWork in progress...\n" ;;
+    delete|del)
+        echo -e "\nWork in progress...\n" ;;
+    copy|cp)
+        copy_entry ;;
+    generate|gen)
+        echo -e "\nWork in progress...\n" ;;
+    help)
+        info_screen ;;
+    *)
+        echo "Action not recognized. Please try again." ;;
 esac
 
 # If no arguments are given, ask user for input
@@ -220,44 +188,32 @@ while true ; do
                 echo "Do you want to add another entry? (Y/n)" ; read query
                 case "$query" in
                     [Yy]*)
-                        add_entry
-                        ;;
+                        add_entry ;;
                     [Nn]*)
                         break ;;
                     *)
                         query=""
-                        echo "Please answer with (Y/n)"
-                        ;;
+                        echo "Please answer with (Y/n)" ;;
                 esac
             done
-            encrypt_file
-            ;;
+            encrypt_file ;;
         list|ls)
-            list_entries
-            ;;
+            list_entries ;;
         find)
-            find_entry
-            ;;
+            find_entry ;;
         edit)
-            echo -e "\nWork in progress...\n"
-            ;;
+            echo -e "\nWork in progress...\n" ;;
         delete|del)
-            echo -e "\nWork in progress...\n"
-            ;;
+            echo -e "\nWork in progress...\n" ;;
         copy|cp)
-            copy_entry
-            ;;
+            copy_entry ;;
         generate|gen)
-            echo -e "\nWork in progress...\n"
-            ;;
+            echo -e "\nWork in progress...\n" ;;
         exit)
-            exit
-            ;;
+            exit ;;
         help)
-            info_screen
-            ;;
+            info_screen ;;
         *)
-            echo "Action not recognized. Please try again."
-            ;;
+            echo "Action not recognized. Please try again." ;;
     esac
 done
