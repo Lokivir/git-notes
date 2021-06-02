@@ -25,6 +25,9 @@ read_file()
 
 add_entry()
 {
+    if [[ -f $PASSWORDS ]] ; then
+        decrypt_file
+    fi
     echo "--New Entry--"
     echo "Account:" ; read new_entry_a
     # if [[ $(grep "$new_entry_a" ${PATH_TO_FILE}/passwords) ]] ; then
@@ -45,6 +48,7 @@ add_entry()
                     echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_FILE}/passwords"
                     return 0 ;;
                 [Nn]*)
+                    encrypt_file
                     echo "Entry wasn't added..."
                     break ;;
                 *)
