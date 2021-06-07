@@ -107,7 +107,8 @@ copy_entry()
 
 generate_entry()
 {
-    apg -M SNCL -n $1 -a 0 -t -E '{}[]<>/\' -m $2 -x $2
+    # apg -M SNCL -n $1 -a 0 -t -E '{}[]<>/\' -m $2 -x $2
+    apg -M SNCL -n $1 -a 0 -t -E '{}[]<>/\' -m $2
 }
 
 info_screen()
