@@ -1,18 +1,18 @@
 #!/bin/bash
-export PATH_TO_FILE=/home/$USER/.password_manager
-export PASSWORDS="${PATH_TO_FILE}/passwords.cpt"
+export PATH_TO_PASSWORDS=/home/$USER/.password_manager
+export PASSWORDS="${PATH_TO_PASSWORDS}/passwords.cpt"
 export PATH=/home/$USER/git-notes/bin:$PATH
 
 encrypt_file()
 {
-    echo "Encrypting file..."
-    ccrypt -e "${PATH_TO_FILE}/passwords"
+    # echo "Encrypting file..."
+    ccrypt -e "${PATH_TO_PASSWORDS}/passwords"
     return 0
 }
 
 decrypt_file()
 {
-    echo "Decrypting file..."
+    # echo "Decrypting file..."
     ccrypt -d $PASSWORDS
     return 0
 }
@@ -30,22 +30,22 @@ add_entry()
     fi
     echo "--New Entry--"
     echo "Account:" ; read new_entry_a
-    # if [[ $(grep "$new_entry_a" ${PATH_TO_FILE}/passwords) ]] ; then
-    if [[ "$(cat ${PATH_TO_FILE}/passwords | cut -d " " -f 1)" = "$grep $new_entry_a)" ]] ; then
+    # if [[ $(grep "$new_entry_a" ${PATH_TO_PASSWORDS}/passwords) ]] ; then
+    if [[ "$(cat ${PATH_TO_PASSWORDS}/passwords | cut -d " " -f 1)" = "$grep $new_entry_a)" ]] ; then
         echo "Login:" ; read new_entry_l
         echo "Password:" ; read -s new_entry_p
-        echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_FILE}/passwords"
+        echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_PASSWORDS}/passwords"
         return 0
     else
-        echo "Entry already exists" ; echo "Entry name(s):" ; echo "$(cat ${PATH_TO_FILE}/passwords | cut -d " " -f 1 | grep $new_entry_a)"
-        echo "Do you still want to add it though? (Y/n)"
+        echo "Entry already exists" ; echo "Entry name(s):" ; echo "$(cat ${PATH_TO_PASSWORDS}/passwords | cut -d " " -f 1 | grep $new_entry_a)"
+        # echo "Do you still want to add it though? (Y/n)"
         read duplicate_entry
         while true ; do
             case "$duplicate_entry" in
                 [Yy]*)
                     echo "Login:" ; read new_entry_l
                     echo "Password:" ; read -s new_entry_p
-                    echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_FILE}/passwords"
+                    echo $new_entry_a' '$new_entry_l' '$new_entry_p >> "${PATH_TO_PASSWORDS}/passwords"
                     return 0 ;;
                 [Nn]*)
                     encrypt_file
@@ -68,8 +68,8 @@ list_entries()
 check_entry()
 {
     local file=$(read_file | grep $1)
-    echo $file
     if [[ ! -z $file ]] ; then
+        echo $file
         return 0
     else
         echo "Entry not found."
@@ -80,11 +80,11 @@ check_entry()
 find_entry()
 {
     echo "What Account are you searching?" ; read account
-    local entry=$(check_entry $account)
+    entry=$(check_entry $account)
     echo -e "============================\nYour login details are:"
     echo "Account: $account"
-    echo "Login: $echo "$(echo $entry | cut -d " " -f 2)""
-    echo "Password: $echo "$(echo $entry | cut -d " " -f 3)""
+    echo "Login:$echo "$(echo $entry | cut -d " " -f 2)""
+    echo "Password:$echo "$(echo $entry | cut -d " " -f 3)""
     echo "============================"
 }
 
@@ -105,8 +105,18 @@ copy_entry()
     echo -e "Clipboard cleared!\n"
 }
 
-# generate_entry()
-# {}
+generate_entry()
+{
+    apg -M SNCL -n $1 -a 0 -t -E '{}[]<>/\' -m $2 -x $2
+}
+
+info_screen()
+{
+    # echo -e "\nWelcome to this totally reliable password manager\nYou can do the following things in this marvellous program!\n"
+    echo -e "- Add a new entry (add)\n- List all entries (list)\n- Search for an entry (find)\n- Edit an entry (edit)"
+    echo -e "- Delete an entry (delete)\n- Copy an entry to clipboard (copy)\n- Generate a password (generate)\n- Exit (exit)"
+    echo -e "- See this list again (help)\n"
+}
 
 if [[ ! -f $PASSWORDS ]] ; then
     echo "You don't have a password-file. Do you want to create one? (Y/n)"
@@ -115,12 +125,12 @@ if [[ ! -f $PASSWORDS ]] ; then
         case "$create" in
             [Yy]*)
                 create=""
-                if [[ ! -f "${PATH_TO_FILE}/passwords" ]] ; then
-                    echo "Passwordfile of $USER" > "${PATH_TO_FILE}/passwords" ; echo "File created!"
+                if [[ ! -f "${PATH_TO_PASSWORDS}/passwords" ]] ; then
+                    echo "Passwordfile of $USER" > "${PATH_TO_PASSWORDS}/passwords" ; echo "File created!"
                 else
                     echo "Unencrypted file located. Being renamed."
-                    mv "${PATH_TO_FILE}/passwords" "${PATH_TO_FILE}/passwords.bac"
-                    echo "" > "${PATH_TO_FILE}/passwords" ; echo "New file created!"
+                    mv "${PATH_TO_PASSWORDS}/passwords" "${PATH_TO_PASSWORDS}/passwords.bac"
+                    echo "" > "${PATH_TO_PASSWORDS}/passwords" ; echo "New file created!"
                 fi
                 while true ; do
                     echo "Do you want to add an entry? (Y/n)" ; read query
@@ -151,73 +161,71 @@ fi
 # If arguments are given, check for the argument
 case "$1" in
     add)
-        add_entry ;;
+        add_entry
+        exit 0 ;;
     list|ls)
-        list_entries ;;
+        list_entries
+        exit 0 ;;
     find)
-        find_entry ;;
+        find_entry
+        exit 0 ;;
     edit)
-        echo -e "\nWork in progress...\n" ;;
+        echo -e "\nWork in progress...\n"
+        exit 0 ;;
     delete|del)
-        echo -e "\nWork in progress...\n" ;;
+        echo -e "\nWork in progress...\n"
+        exit 0 ;;
     copy|cp)
-        copy_entry ;;
+        copy_entry
+        exit 0 ;;
     generate|gen)
-        echo -e "\nWork in progress...\n" ;;
+        generate_entry $2 $3
+        exit 0 ;;
     help)
-        info_screen ;;
-    *)
-        echo "Action not recognized. Please try again." ;;
+        info_screen
+        exit 0 ;;
 esac
 
 # If no arguments are given, ask user for input
-info_screen()
-{
-    echo -e "\nWelcome to this totally reliable password manager\nYou can do the following things in this marvellous program!\n"
-    echo -e "- Add a new entry (add)\n- List all entries (list)\n- Search for an entry (find)\n- Edit an entry (edit)"
-    echo -e "- Delete an entry (delete)\n- Copy an entry to clipboard (copy)\n- Generate a password (generate)\n- Exit (exit)"
-    echo -e "- See this list again (help)\n"
-}
-
-info_screen
-
-while true ; do
-    echo -e "What do you want to do? (Type \"help\" to see the list of options)"
-    read user_input
-    case "$user_input" in
-        add)
-            decrypt_file
-            add_entry
-            while true ; do
-                echo "Do you want to add another entry? (Y/n)" ; read query
-                case "$query" in
-                    [Yy]*)
-                        add_entry ;;
-                    [Nn]*)
-                        break ;;
-                    *)
-                        query=""
-                        echo "Please answer with (Y/n)" ;;
-                esac
-            done
-            encrypt_file ;;
-        list|ls)
-            list_entries ;;
-        find)
-            find_entry ;;
-        edit)
-            echo -e "\nWork in progress...\n" ;;
-        delete|del)
-            echo -e "\nWork in progress...\n" ;;
-        copy|cp)
-            copy_entry ;;
-        generate|gen)
-            echo -e "\nWork in progress...\n" ;;
-        exit)
-            exit ;;
-        help)
-            info_screen ;;
-        *)
-            echo "Action not recognized. Please try again." ;;
-    esac
-done
+# info_screen
+# 
+# while true ; do
+#     echo -e "What do you want to do? (Type \"help\" to see the list of options)"
+#     read user_input
+#     case "$user_input" in
+#         add)
+#             decrypt_file
+#             add_entry
+#             while true ; do
+#                 echo "Do you want to add another entry? (Y/n)" ; read query
+#                 case "$query" in
+#                     [Yy]*)
+#                         add_entry ;;
+#                     [Nn]*)
+#                         break ;;
+#                     *)
+#                         query=""
+#                         echo "Please answer with (Y/n)" ;;
+#                 esac
+#             done
+#             encrypt_file ;;
+#         list|ls)
+#             list_entries ;;
+#         find)
+#             find_entry ;;
+#         edit)
+#             echo -e "\nWork in progress...\n" ;;
+#         delete|del)
+#             echo -e "\nWork in progress...\n" ;;
+#         copy|cp)
+#             copy_entry ;;
+#         generate|gen)
+#             read password_count ; read password_len ; generate_entry $password_count $password_len ;;
+#         exit)
+#             exit ;;
+#         help)
+#             info_screen ;;
+#         *)
+#             echo "Action not recognized. Please try again." ;;
+#     esac
+# done
